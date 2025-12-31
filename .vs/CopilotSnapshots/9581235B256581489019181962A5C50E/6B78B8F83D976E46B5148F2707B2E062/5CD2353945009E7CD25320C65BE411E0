@@ -1,0 +1,27 @@
+﻿using Ardalis.Specification.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Persistence.Repository
+{
+    public class MyRepositoryAsync<T> : RepositoryBase<T>, IRepositoryAsync<T> where T : class
+    {
+        private readonly ApplicationDbCntext dbcontext;
+
+        public MyRepositoryAsync(DbContext dbContext) : base(dbContext)
+        {
+            this.dbcontext = dbcontext;
+        }
+           
+        
+
+    }
+
+    internal interface IRepositoryAsync<T> where T : class
+    {
+    }
+}

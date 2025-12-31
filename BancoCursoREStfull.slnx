@@ -1,0 +1,14 @@
+<Solution>
+  <Folder Name="/scr/" />
+  <Folder Name="/scr/core/">
+    <Project Path="Application/Application.csproj" Id="f68441f5-50f0-487c-a00d-cbbf41368a62" />
+    <Project Path="Domain/Domain.csproj" Id="cbdd6b63-a175-44bd-ad3c-201d305e5fc9" />
+  </Folder>
+  <Folder Name="/scr/infraestructure/">
+    <Project Path="Persistence/Persistence.csproj" Id="7c8aa346-86c1-4aa1-bd66-fbc55a6a7f0e" />
+    <Project Path="Share/Share.csproj" Id="1af9c94b-fe63-4a16-a105-ca5febd3563c" />
+  </Folder>
+  <Folder Name="/scr/presentation/">
+    <Project Path="WebAPI/WebAPI.csproj" Id="a5f349d6-0fdd-4c81-b805-d40811c50336" />
+  </Folder>
+</Solution>
