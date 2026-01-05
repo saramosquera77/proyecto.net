@@ -39,7 +39,7 @@ namespace Persistence.Configuration
                 .HasMaxLength(120)
                 .IsRequired();
 
-            builder.Property(p => p.Edad);
+            builder.Ignore(p => p.Edad);
 
             builder.Property(p => p.CreatedBy)
                 .HasMaxLength(30);
