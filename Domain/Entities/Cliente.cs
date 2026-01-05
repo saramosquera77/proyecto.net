@@ -9,30 +9,21 @@ namespace Domain.Entities
 {
     public class Cliente : AuditableBaseEntity
     {
-        private int _edad;
-
-        public string Nombre { get; set; }
-
-        public string Apellido { get; set; }
+        public string Nombre { get; set; } = string.Empty;
+        public string Apellido { get; set; } = string.Empty;
         public DateTime FechaNacimiento { get; set; }
+        public string Telefono { get; set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;
+        public string Direccion { get; set; } = string.Empty;
 
-        public string Telefono { get; set; }
-
-        public string Email { get; set; }
-
-        public string Direccion { get; set; }
-        public int Edad  { get; set; }
-        public object FechaDeNacimiento { get; set; }
-
-        private int edad
+        public int Edad
         {
             get
             {
-                if (this._edad <= 0)
-                {
-                    this.Edad = new DateTime(DateTime.Now.Subtract(this.FechaNacimiento).Ticks).Year - 1;
-                }
-                return this._edad;
+                if (FechaNacimiento == default(DateTime))
+                    return 0;
+                
+                return new DateTime(DateTime.Now.Subtract(FechaNacimiento).Ticks).Year - 1;
             }
         }
     }
