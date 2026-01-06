@@ -13,7 +13,6 @@
     <Folder Include="feautres\clientes\Queries\GetAllClientes\" />
     <Folder Include="feautres\clientes\Queries\GetClienteByld\" />
     <Folder Include="Filters\" />
-    <Folder Include="Mappings\" />
   </ItemGroup>
 
   <ItemGroup>

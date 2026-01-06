@@ -2,6 +2,7 @@ using Application;
 using Microsoft.Extensions.Configuration;
 using Persistence;
 using System.ComponentModel.DataAnnotations;
+using WebAPI.Extensions;
 
 internal class Program
 {
@@ -14,6 +15,7 @@ internal class Program
         builder.Services.AddApplicationLayer();
         builder.Services.AddPersistenceInfraestructure(builder.Configuration);
         builder.Services.AddEndpointsApiExplorer();
+        builder.Services.AddApiVersioningExtension();
         builder.Services.AddSwaggerGen();
 
 
@@ -24,6 +26,8 @@ internal class Program
         {
             app.UseSwagger();
             app.UseSwaggerUI();
+            app.UseErrorHandlingMiddleware();
+            
         }
 
         app.UseHttpsRedirection();

@@ -8,6 +8,7 @@ using MediatR;
 using Application.wrappers;
 using Application.Interfaces;
 using Domain.Entities;
+using AutoMapper;
 
 namespace Application.feautres.clientes.commands.CreateClienteCommand
 {
@@ -23,27 +24,22 @@ namespace Application.feautres.clientes.commands.CreateClienteCommand
     
     public class CreateClienteCommandHandler : IRequestHandler<CreateClienteCommand, Response<int>>
     {
-        private readonly IRepositoryAsync<Cliente> _repositoryAsync;
+        private readonly IRepositoryAsync<Cliente>? _repositoryAsync;
+        private readonly IMapper _mapper;
 
-        public CreateClienteCommandHandler(IRepositoryAsync<Cliente> repositoryAsync)
+        public CreateClienteCommandHandler(IRepositoryAsync<Cliente>? repositoryAsync, IMapper mapper)
         {
             _repositoryAsync = repositoryAsync;
+            _mapper = mapper;
         }
+
 
         public async Task<Response<int>> Handle(CreateClienteCommand request, CancellationToken cancellationToken)
         {
-            var cliente = new Cliente
-            {
-                Nombre = request.Nombre,
-                Apellido = request.Apellido,
-                FechaNacimiento = request.FechaNacimiento,
-                Telefono = request.Telefono,
-                Email = request.Email,
-                Direccion = request.Direccion
-            };
+          var nuenoRegistro = _mapper.Map<Cliente>(request);
+            var data = await _repositoryAsync.AddAsync(nuenoRegistro);
 
-            var data = await _repositoryAsync.AddAsync(cliente, cancellationToken);
-            return new Response<int>(data.Id, "Cliente creado exitosamente");
+            return new Response<int>(data.Id);
         }
     }
 }
